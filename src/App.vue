@@ -1,29 +1,47 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterLink, RouterView } from "vue-router";
+import HelloWorld from "./components/HelloWorld.vue";
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="测试gitPage,测试" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <v-app>
+    <v-app-bar :elevation="24">
+      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="50" />
+      <v-card width="100%">
+        <v-tabs v-model="tab" stacked align-tabs="center" center-active>
+          <router-link to="/">
+            <v-tab value="one"> 首页 </v-tab>
+          </router-link>
+          <router-link to="/about">
+            <v-tab value="two"> 产品 </v-tab>
+          </router-link>
+          <router-link to="/about">
+            <v-tab value="three">
+              关于
+              <v-icon role="img" size="large"
+              icon="mdi-home"/>
+            </v-tab>
+          </router-link>
+        </v-tabs>
+      </v-card>
+    </v-app-bar>
+    <RouterView />
+    <v-footer :elevation="12" :app="true">
+      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="40" />
+    </v-footer>
+  </v-app>
 </template>
-
+<script>
+export default {
+  data: () => ({
+    tab: "one",
+  }),
+};
+</script>
 <style scoped>
 header {
   line-height: 1.5;
-  max-height: 100vh;
+  max-height: 10vh;
 }
 
 .logo {
@@ -40,20 +58,6 @@ nav {
 
 nav a.router-link-exact-active {
   color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
 }
 
 @media (min-width: 1024px) {

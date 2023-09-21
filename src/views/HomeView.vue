@@ -3,7 +3,20 @@ import TheWelcome from '../components/TheWelcome.vue'
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <div class="test">
+    测试
+  </div>
 </template>
+<script>
+  export default {
+    data: () => ({
+      tab: null,
+    }),
+  }
+</script>
+<style lang="scss">
+  .test{
+    position: relative;
+    top: 70px;
+  }
+</style>
