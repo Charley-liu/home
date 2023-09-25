@@ -6,28 +6,21 @@ import HelloWorld from "./components/HelloWorld.vue";
 <template>
   <v-app>
     <v-app-bar :elevation="24">
-      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="50" />
-      <v-card width="100%">
+      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="42" />
+      <v-card width="80%">
         <v-tabs v-model="tab" stacked align-tabs="center" center-active>
-          <router-link to="/">
-            <v-tab value="one"> 首页 </v-tab>
-          </router-link>
-          <router-link to="/about">
-            <v-tab value="two"> 产品 </v-tab>
-          </router-link>
-          <router-link to="/about">
-            <v-tab value="three">
-              关于
-              <v-icon role="img" size="large"
-              icon="mdi-home"/>
+          <router-link :to="item.link" v-for="item in data">
+            <v-tab :value="item.value">
+              <v-icon role="img" size="default" :icon="item.icon" />
+              首页
             </v-tab>
           </router-link>
         </v-tabs>
       </v-card>
     </v-app-bar>
     <RouterView />
-    <v-footer :elevation="12" :app="true">
-      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="40" />
+    <v-footer :elevation="12" class="bg-indigo-lighten-1 text-center d-flex flex-column opacity" :app="true">
+      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="30" />
     </v-footer>
   </v-app>
 </template>
@@ -35,15 +28,27 @@ import HelloWorld from "./components/HelloWorld.vue";
 export default {
   data: () => ({
     tab: "one",
+    data: [
+      {
+        link: "/home",
+        icon: "mdi-home",
+        value: "one",
+      },
+      {
+        link: "/about",
+        icon: "mdi-apps",
+        value: "two",
+      },
+      {
+        link: "/about",
+        icon: "mdi-tooltip-account",
+        value: "three",
+      },
+    ],
   }),
 };
 </script>
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 10vh;
-}
-
 .logo {
   display: block;
   margin: 0 auto 2rem;
@@ -55,9 +60,15 @@ nav {
   text-align: center;
   margin-top: 2rem;
 }
+.opacity{
+  background-color: rgba(0, 0, 0, 0.4) !important;
+}
 
 nav a.router-link-exact-active {
   color: var(--color-text);
+}
+.v-card--variant-elevated {
+  box-shadow: none;
 }
 
 @media (min-width: 1024px) {
