@@ -12,7 +12,7 @@ import HelloWorld from "./components/HelloWorld.vue";
           <router-link :to="item.link" v-for="item in data">
             <v-tab :value="item.value">
               <v-icon role="img" size="default" :icon="item.icon" />
-              首页
+              {{item.name}}
             </v-tab>
           </router-link>
         </v-tabs>
@@ -33,16 +33,19 @@ export default {
         link: "/home",
         icon: "mdi-home",
         value: "one",
+        name:"首页"
       },
       {
         link: "/about",
         icon: "mdi-apps",
         value: "two",
+        name:"关于"
       },
       {
         link: "/about",
         icon: "mdi-tooltip-account",
         value: "three",
+        name:"我的"
       },
     ],
   }),
