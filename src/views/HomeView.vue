@@ -3,7 +3,7 @@ import TheWelcome from "../components/TheWelcome.vue";
 </script>
 
 <template>
-  <v-parallax src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg">
+  <v-parallax height="2000" src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg">
   <div class="test">
       <v-carousel cycle height="500">
         <v-carousel-item
@@ -34,8 +34,6 @@ export default {
 <style lang="scss">
 .test {
   position: relative;
-  top: 68px;
-  width: 80vw;
   margin: 0 auto;
 }
 </style>

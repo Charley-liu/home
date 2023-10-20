@@ -5,10 +5,10 @@ import HelloWorld from "./components/HelloWorld.vue";
 
 <template>
   <v-app>
-    <v-app-bar :elevation="24">
-      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="42" />
-      <v-card width="80%">
-        <v-tabs v-model="tab" stacked align-tabs="center" center-active>
+    <v-app-bar :elevation="24" style="background-color: transparent;">
+      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="100" height="42" />
+      <v-card width="100%" style="background-color: transparent;">
+        <v-tabs v-model="tab" stacked align-tabs="right" center-active>
           <router-link :to="item.link" v-for="item in data">
             <v-tab :value="item.value">
               <v-icon role="img" size="default" :icon="item.icon" />
@@ -19,8 +19,24 @@ import HelloWorld from "./components/HelloWorld.vue";
       </v-card>
     </v-app-bar>
     <RouterView />
-    <v-footer :elevation="12" class="bg-indigo-lighten-1 text-center d-flex flex-column opacity" :app="true">
-      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="30" />
+    <v-footer :elevation="12" >
+      <div class="footercontent">
+        <div class="contact">
+            <div style="width:373px; height:140px; position:relative; float:left; background-color:rgba(0,0,0,0.20);">
+                <div class="footertitle" style="text-align:center;">办公地址</div>
+                <div class="footertext" style="text-align:center;">北京市房山区</div>
+            </div>
+            <div style="width:373px; height:140px; position:relative; float:left; background-color:rgba(0,0,0,0.40);">
+                <div class="footertitle" style="text-align:center;">商务合作</div>
+                <div class="footertext" style="text-align:center;">Tel：010-53616906 / 13810814092（米女士）<br>e-mail：<a href="mailto:huituyanxue@huitu-trip.com">huituyanxue@huitu-trip.com</a></div>
+            </div>
+            <div style="width:373px; height:140px; position:relative; float:left; background-color:rgba(0,0,0,0.20);">
+                <div class="footertitle" style="text-align:center;">加入惠途</div>
+                <div class="footertext" style="text-align:center;">e-mail：<a href="mailto:huituyanxue@huitu-trip.com">huituyanxue@huitu-trip.com</a></div>
+            </div>
+        </div>
+        <div class="copy">©2023 北京惠途旅游有限责任公司&nbsp;&nbsp;京ICP备11031713号 京公网备案11010802009073</div>
+    </div>
     </v-footer>
   </v-app>
 </template>
@@ -54,12 +70,12 @@ export default {
 <style scoped>
 .logo {
   display: block;
-  margin: 0 auto 2rem;
+  margin: 0 auto;
 }
 
 nav {
   width: 100%;
-  font-size: 12px;
+  font-size: 1rem;
   text-align: center;
   margin-top: 2rem;
 }
@@ -100,4 +116,19 @@ nav a.router-link-exact-active {
     margin-top: 1rem;
   }
 }
+footer {  float:left; width:100%; min-width:1200px; height:640px; background-color:#222;}
+footer .footercontent { width:1120px; position:relative; margin:0px auto;}
+footer .footertitle { font-size:16px; color:#fff; line-height:16px; margin:30px 0px 20px 0px;}
+footer .footertext { font-size:14px; color:rgba(255,255,255,0.50); line-height:24px; font-weight:300; }
+footer a { color:#9f9f9f;}
+footer a:hover {
+	color:#fff;
+}
+footer .contact { width:1120px; position:relative; float:left; margin:80px auto 30px auto; display:block; }
+footer .content { width:1120px; height:320px; position:relative; float:left; margin:0px auto 0px auto; display:block;}
+footer .copy { width:1120px; position:relative; float:left; margin:0px auto; border-top:1px solid rgba(255,255,255,0.10); font-size:14px; line-height:60px; color:rgba(255,255,255,0.30); text-align:center;}
+
+footer .newslist { width:740px; float:left; margin-bottom:20px;}
+footer .newslist .newstitle { width:500px; display:block; float:left; font-size:14px; color:rgba(255,255,255,0.80); line-height:14px; margin:0px 0px 10px 20px; font-weight:300;}
+footer .newslist .newscontent { width:500px; display:block; float:left; font-size:14px; color:rgba(255,255,255,0.50); line-height:24px; margin:0px 0px 10px 20px; font-weight:300;}
 </style>
