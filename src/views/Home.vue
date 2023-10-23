@@ -1,73 +1,97 @@
 <template>
-  <!-- <v-card> -->
+  <v-parallax
+    height="2000"
+    src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
+  >
+    <!-- 轮播 -->
+    <div class="test">
+      <v-carousel cycle height="500">
+        <v-carousel-item
+          src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+          cover
+        ></v-carousel-item>
 
-    <!-- <v-container> -->
-      <v-parallax
-        height="2000"
-        src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
-      >
-        <div class="test">
-          <v-carousel cycle height="500">
-            <v-carousel-item
-              src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+        <v-carousel-item
+          src="https://cdn.vuetifyjs.com/images/cards/hotel.jpg"
+          cover
+        ></v-carousel-item>
+
+        <v-carousel-item
+          src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+          cover
+        ></v-carousel-item>
+      </v-carousel>
+    </div>
+    <!-- 简介 -->
+    <v-container fluid>
+      <v-row dense>
+        <v-col v-for="card in cards" :key="card.title" :cols="card.flex">
+          <v-card>
+            <v-img
+              :src="card.src"
+              class="align-end"
+              gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+              height="400px"
               cover
-            ></v-carousel-item>
-    
-            <v-carousel-item
-              src="https://cdn.vuetifyjs.com/images/cards/hotel.jpg"
-              cover
-            ></v-carousel-item>
-    
-            <v-carousel-item
-              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-              cover
-            ></v-carousel-item>
-          </v-carousel>
-        </div>
-        <v-container fluid>
-          <v-row dense>
-            <v-col
-              v-for="card in cards"
-              :key="card.title"
-              :cols="card.flex"
             >
-              <v-card>
-                <v-img
-                  :src="card.src"
-                  class="align-end"
-                  gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-                  height="200px"
-                  cover
-                >
-                  <v-card-title class="text-white" v-text="card.title"></v-card-title>
-                </v-img>
-    
-                <v-card-actions>
-                  <v-spacer></v-spacer>
-    
-                  <v-btn size="small" color="surface-variant" variant="text" icon="mdi-heart"></v-btn>
-    
-                  <v-btn size="small" color="surface-variant" variant="text" icon="mdi-bookmark"></v-btn>
-    
-                  <v-btn size="small" color="surface-variant" variant="text" icon="mdi-share-variant"></v-btn>
-                </v-card-actions>
-              </v-card>
-            </v-col>
-          </v-row>
-        </v-container>
-      </v-parallax>
-    <!-- </v-container> -->
-  <!-- </v-card> -->
+              <v-card-title class="text-white" v-text="card.title"></v-card-title>
+            </v-img>
+
+            <v-card-actions>
+              <v-spacer></v-spacer>
+
+              <v-btn
+                size="small"
+                color="surface-variant"
+                variant="text"
+                icon="mdi-heart"
+              ></v-btn>
+
+              <v-btn
+                size="small"
+                color="surface-variant"
+                variant="text"
+                icon="mdi-bookmark"
+              ></v-btn>
+
+              <v-btn
+                size="small"
+                color="surface-variant"
+                variant="text"
+                icon="mdi-share-variant"
+              ></v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+    <!-- 宣传 -->
+    <v-container>
+
+    </v-container>
+  </v-parallax>
 </template>
 <script>
 export default {
   data: () => ({
     tab: null,
     cards: [
-        { title: 'Pre-fab homes', src: 'https://cdn.vuetifyjs.com/images/cards/house.jpg', flex: 12 },
-        { title: 'Favorite road trips', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', flex: 6 },
-        { title: 'Best airlines', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', flex: 6 },
-      ],
+      {
+        title: "Pre-fab homes",
+        src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
+        flex: 12,
+      },
+      {
+        title: "Favorite road trips",
+        src: "https://cdn.vuetifyjs.com/images/cards/road.jpg",
+        flex: 6,
+      },
+      {
+        title: "Best airlines",
+        src: "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
+        flex: 6,
+      },
+    ],
   }),
 };
 </script>
