@@ -1,41 +1,88 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "./components/HelloWorld.vue";
 </script>
 
 <template>
   <v-app>
-    <v-app-bar :elevation="24" id="target">
-      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="100" height="42" />
-      <v-card width="100%" id="target" >
-        <v-tabs v-model="tab" style="float: right;margin-right:5rem" color="green-lighten-1">
-          <router-link :to="item.link" v-for="item in data">
-            <v-tab :value="item.value">
-              {{item.name}}
-            </v-tab>
-          </router-link>
-        </v-tabs>
-      </v-card>
-    </v-app-bar>
-    <RouterView />
-    <v-footer :elevation="12" >
+    <v-header>
+      <v-app-bar :elevation="24" id="target">
+        <img
+          alt="Vue logo"
+          class="logo"
+          src="@/assets/logo.svg"
+          width="100"
+          height="42"
+        />
+        <v-card width="100%" id="target">
+          <v-tabs
+            v-model="tab"
+            style="float: right; margin-right: 5rem"
+            color="green-lighten-1"
+          >
+            <router-link :to="item.link" v-for="item in data">
+              <v-tab :value="item.value" v-ripple.center>
+                {{ item.name }}
+              </v-tab>
+            </router-link>
+          </v-tabs>
+        </v-card>
+      </v-app-bar>
+    </v-header>
+      <RouterView />
+    <v-footer :elevation="12">
       <div class="footercontent">
         <div class="contact">
-            <div style="width:373px; height:140px; position:relative; float:left; background-color:rgba(0,0,0,0.20);">
-                <div class="footertitle" style="text-align:center;">办公地址</div>
-                <div class="footertext" style="text-align:center;">北京市房山区</div>
+          <div
+            style="
+              width: 373px;
+              height: 140px;
+              position: relative;
+              float: left;
+              background-color: rgba(0, 0, 0, 0.2);
+            "
+          >
+            <div class="footertitle" style="text-align: center">办公地址</div>
+            <div class="footertext" style="text-align: center">北京市房山区</div>
+          </div>
+          <div
+            style="
+              width: 373px;
+              height: 140px;
+              position: relative;
+              float: left;
+              background-color: rgba(0, 0, 0, 0.4);
+            "
+          >
+            <div class="footertitle" style="text-align: center">商务合作</div>
+            <div class="footertext" style="text-align: center">
+              Tel：010-53616906 / 13810814092（米女士）<br />e-mail：<a
+                href="mailto:huituyanxue@huitu-trip.com"
+                >huituyanxue@huitu-trip.com</a
+              >
             </div>
-            <div style="width:373px; height:140px; position:relative; float:left; background-color:rgba(0,0,0,0.40);">
-                <div class="footertitle" style="text-align:center;">商务合作</div>
-                <div class="footertext" style="text-align:center;">Tel：010-53616906 / 13810814092（米女士）<br>e-mail：<a href="mailto:huituyanxue@huitu-trip.com">huituyanxue@huitu-trip.com</a></div>
+          </div>
+          <div
+            style="
+              width: 373px;
+              height: 140px;
+              position: relative;
+              float: left;
+              background-color: rgba(0, 0, 0, 0.2);
+            "
+          >
+            <div class="footertitle" style="text-align: center">加入惠途</div>
+            <div class="footertext" style="text-align: center">
+              e-mail：<a href="mailto:huituyanxue@huitu-trip.com"
+                >huituyanxue@huitu-trip.com</a
+              >
             </div>
-            <div style="width:373px; height:140px; position:relative; float:left; background-color:rgba(0,0,0,0.20);">
-                <div class="footertitle" style="text-align:center;">加入惠途</div>
-                <div class="footertext" style="text-align:center;">e-mail：<a href="mailto:huituyanxue@huitu-trip.com">huituyanxue@huitu-trip.com</a></div>
-            </div>
+          </div>
         </div>
-        <div class="copy">©2023 北京惠途旅游有限责任公司&nbsp;&nbsp;京ICP备11031713号 京公网备案11010802009073</div>
-    </div>
+        <div class="copy">
+          ©2023 北京惠途旅游有限责任公司&nbsp;&nbsp;京ICP备11031713号
+          京公网备案11010802009073
+        </div>
+      </div>
     </v-footer>
   </v-app>
 </template>
@@ -48,37 +95,41 @@ export default {
         link: "/home",
         icon: "mdi-home",
         value: "one",
-        name:"首页"
+        name: "首页",
       },
       {
-        link: "/about",
+        link: "/HelloWorlds",
         icon: "mdi-apps",
         value: "two",
-        name:"关于"
+        name: "关于",
       },
       {
         link: "/about",
         icon: "mdi-tooltip-account",
         value: "three",
-        name:"我的"
+        name: "我的",
       },
     ],
   }),
-  mounted:()=>{
-    var target = document.getElementById('target');
-    window.addEventListener('scroll', function() {
+  mounted: () => {
+    var target = document.getElementById("target");
+    window.addEventListener("scroll", function () {
       var scrollTop = window.scrollY;
       var windowHeight = window.innerHeight;
-      var documentHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+      var documentHeight = Math.max(
+        document.documentElement.scrollHeight,
+        document.body.scrollHeight
+      );
       var scrollPosition = (scrollTop + windowHeight) / documentHeight;
-      target.style.backgroundColor = 'rgba(255, 255, 255, ' + scrollPosition.toFixed(2) + ')';
+      target.style.backgroundColor =
+        "rgba(255, 255, 255, " + scrollPosition.toFixed(2) + ")";
     });
-  }
+  },
 };
 </script>
 <style scoped>
 #target {
-  background-color:rgba(255, 255, 255, 0);
+  background-color: rgba(255, 255, 255, 0);
 }
 .logo {
   display: block;
@@ -91,7 +142,7 @@ nav {
   text-align: center;
   margin-top: 2rem;
 }
-.opacity{
+.opacity {
   background-color: rgba(0, 0, 0, 0.4) !important;
 }
 
@@ -128,19 +179,86 @@ nav a.router-link-exact-active {
     margin-top: 1rem;
   }
 }
-footer {  float:left; width:100%; min-width:1200px; height:640px; background-color:#222;}
-footer .footercontent { width:1120px; position:relative; margin:0px auto;}
-footer .footertitle { font-size:16px; color:#fff; line-height:16px; margin:30px 0px 20px 0px;}
-footer .footertext { font-size:14px; color:rgba(255,255,255,0.50); line-height:24px; font-weight:300; }
-footer a { color:#9f9f9f;}
-footer a:hover {
-	color:#fff;
+footer {
+  float: left;
+  width: 100%;
+  min-width: 1200px;
+  height: 640px;
+  background-color: #222;
 }
-footer .contact { width:1120px; position:relative; float:left; margin:80px auto 30px auto; display:block; }
-footer .content { width:1120px; height:320px; position:relative; float:left; margin:0px auto 0px auto; display:block;}
-footer .copy { width:1120px; position:relative; float:left; margin:0px auto; border-top:1px solid rgba(255,255,255,0.10); font-size:14px; line-height:60px; color:rgba(255,255,255,0.30); text-align:center;}
+footer .footercontent {
+  width: 1120px;
+  position: relative;
+  margin: 0px auto;
+}
+footer .footertitle {
+  font-size: 16px;
+  color: #fff;
+  line-height: 16px;
+  margin: 30px 0px 20px 0px;
+}
+footer .footertext {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 24px;
+  font-weight: 300;
+}
+footer a {
+  color: #9f9f9f;
+}
+footer a:hover {
+  color: #fff;
+}
+footer .contact {
+  width: 1120px;
+  position: relative;
+  float: left;
+  margin: 80px auto 30px auto;
+  display: block;
+}
+footer .content {
+  width: 1120px;
+  height: 320px;
+  position: relative;
+  float: left;
+  margin: 0px auto 0px auto;
+  display: block;
+}
+footer .copy {
+  width: 1120px;
+  position: relative;
+  float: left;
+  margin: 0px auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 14px;
+  line-height: 60px;
+  color: rgba(255, 255, 255, 0.3);
+  text-align: center;
+}
 
-footer .newslist { width:740px; float:left; margin-bottom:20px;}
-footer .newslist .newstitle { width:500px; display:block; float:left; font-size:14px; color:rgba(255,255,255,0.80); line-height:14px; margin:0px 0px 10px 20px; font-weight:300;}
-footer .newslist .newscontent { width:500px; display:block; float:left; font-size:14px; color:rgba(255,255,255,0.50); line-height:24px; margin:0px 0px 10px 20px; font-weight:300;}
+footer .newslist {
+  width: 740px;
+  float: left;
+  margin-bottom: 20px;
+}
+footer .newslist .newstitle {
+  width: 500px;
+  display: block;
+  float: left;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 14px;
+  margin: 0px 0px 10px 20px;
+  font-weight: 300;
+}
+footer .newslist .newscontent {
+  width: 500px;
+  display: block;
+  float: left;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 24px;
+  margin: 0px 0px 10px 20px;
+  font-weight: 300;
+}
 </style>
