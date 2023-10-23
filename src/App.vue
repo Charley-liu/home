@@ -5,13 +5,12 @@ import HelloWorld from "./components/HelloWorld.vue";
 
 <template>
   <v-app>
-    <v-app-bar :elevation="24" style="background-color: transparent;">
+    <v-app-bar :elevation="24" id="target">
       <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="100" height="42" />
-      <v-card width="100%" style="background-color: transparent;">
-        <v-tabs v-model="tab" stacked align-tabs="right" center-active>
+      <v-card width="100%" id="target" >
+        <v-tabs v-model="tab" style="float: right;margin-right:5rem" color="green-lighten-1">
           <router-link :to="item.link" v-for="item in data">
             <v-tab :value="item.value">
-              <v-icon role="img" size="default" :icon="item.icon" />
               {{item.name}}
             </v-tab>
           </router-link>
@@ -65,9 +64,22 @@ export default {
       },
     ],
   }),
+  mounted:()=>{
+    var target = document.getElementById('target');
+    window.addEventListener('scroll', function() {
+      var scrollTop = window.scrollY;
+      var windowHeight = window.innerHeight;
+      var documentHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+      var scrollPosition = (scrollTop + windowHeight) / documentHeight;
+      target.style.backgroundColor = 'rgba(255, 255, 255, ' + scrollPosition.toFixed(2) + ')';
+    });
+  }
 };
 </script>
 <style scoped>
+#target {
+  background-color:rgba(255, 255, 255, 0);
+}
 .logo {
   display: block;
   margin: 0 auto;
