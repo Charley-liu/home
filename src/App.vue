@@ -1,11 +1,7 @@
-<script setup>
-import { RouterLink, RouterView } from "vue-router";
-</script>
-
 <template>
   <v-app>
     <v-header>
-      <v-app-bar :elevation="24" id="target">
+      <v-app-bar id="target">
         <img
           alt="Vue logo"
           class="logo"
@@ -13,14 +9,14 @@ import { RouterLink, RouterView } from "vue-router";
           width="100"
           height="42"
         />
-        <v-card width="100%" id="target">
+        <v-card id="target">
           <v-tabs
             v-model="tab"
-            style="float: right; margin-right: 5rem"
-            color="green-lighten-1"
+            color="deep-purple-accent-4"
+            align-tabs="end"
           >
             <router-link :to="item.link" v-for="item in data">
-              <v-tab :value="item.value" v-ripple.center>
+              <v-tab :value="item.value">
                 {{ item.name }}
               </v-tab>
             </router-link>
@@ -28,68 +24,74 @@ import { RouterLink, RouterView } from "vue-router";
         </v-card>
       </v-app-bar>
     </v-header>
-      <RouterView />
+    <RouterView />
     <v-footer :elevation="12">
       <div class="footercontent">
-        <div class="contact">
-          <div
-            style="
-              width: 373px;
-              height: 140px;
-              position: relative;
-              float: left;
-              background-color: rgba(0, 0, 0, 0.2);
-            "
-          >
-            <div class="footertitle" style="text-align: center">办公地址</div>
-            <div class="footertext" style="text-align: center">北京市房山区</div>
-          </div>
-          <div
-            style="
-              width: 373px;
-              height: 140px;
-              position: relative;
-              float: left;
-              background-color: rgba(0, 0, 0, 0.4);
-            "
-          >
-            <div class="footertitle" style="text-align: center">商务合作</div>
-            <div class="footertext" style="text-align: center">
-              Tel：010-53616906 / 13810814092（米女士）<br />e-mail：<a
-                href="mailto:huituyanxue@huitu-trip.com"
-                >huituyanxue@huitu-trip.com</a
-              >
-            </div>
-          </div>
-          <div
-            style="
-              width: 373px;
-              height: 140px;
-              position: relative;
-              float: left;
-              background-color: rgba(0, 0, 0, 0.2);
-            "
-          >
-            <div class="footertitle" style="text-align: center">加入惠途</div>
-            <div class="footertext" style="text-align: center">
-              e-mail：<a href="mailto:huituyanxue@huitu-trip.com"
-                >huituyanxue@huitu-trip.com</a
-              >
-            </div>
-          </div>
-        </div>
-        <div class="copy">
-          ©2023 北京惠途旅游有限责任公司&nbsp;&nbsp;京ICP备11031713号
-          京公网备案11010802009073
-        </div>
+          <v-row align="center" no-gutters class="contact">
+            <v-col
+              align-self="start"
+              class="mb-6"
+              style="
+                height: 140px;
+                position: relative;
+                float: left;
+                background-color: rgba(0, 0, 0, 0.2);
+              "
+            >
+              <div class="footertitle" style="text-align: center">办公地址</div>
+              <div class="footertext" style="text-align: center">北京市房山区</div>
+            </v-col>
+            <v-col
+              align-self="center"
+              class="mb-6"
+              style="
+                height: 140px;
+                position: relative;
+                float: left;
+                background-color: rgba(0, 0, 0, 0.4);
+              "
+            >
+              <div class="footertitle" style="text-align: center">商务合作</div>
+              <div class="footertext" style="text-align: center">
+                Tel：010-53616906 / 13810814092（米女士）<br />e-mail：<a
+                  href="mailto:huituyanxue@huitu-trip.com"
+                  >huituyanxue@huitu-trip.com</a
+                >
+              </div>
+            </v-col>
+            <v-col
+            class="mb-6"
+              align-self="end"
+              style="
+                height: 140px;
+                position: relative;
+                float: left;
+                background-color: rgba(0, 0, 0, 0.2);
+              "
+            >
+              <div class="footertitle" style="text-align: center">加入惠途</div>
+              <div class="footertext" style="text-align: center">
+                e-mail：<a href="mailto:huituyanxue@huitu-trip.com"
+                  >huituyanxue@huitu-trip.com</a
+                >
+              </div>
+            </v-col>
+          </v-row>
+          <v-row class="copy">
+            <v-col>
+              ©2023 北京惠途旅游有限责任公司&nbsp;&nbsp;京ICP备11031713号
+              京公网备案11010802009073
+            </v-col>
+          </v-row>
       </div>
     </v-footer>
   </v-app>
 </template>
 <script>
+import { RouterLink, RouterView } from "vue-router";
 export default {
   data: () => ({
-    tab: "one",
+    tab: null,
     data: [
       {
         link: "/home",
@@ -98,16 +100,16 @@ export default {
         name: "首页",
       },
       {
-        link: "/HelloWorlds",
+        link: "/product",
         icon: "mdi-apps",
         value: "two",
-        name: "关于",
+        name: "产品",
       },
       {
         link: "/about",
         icon: "mdi-tooltip-account",
         value: "three",
-        name: "我的",
+        name: "关于",
       },
     ],
   }),
@@ -130,6 +132,7 @@ export default {
 <style scoped>
 #target {
   background-color: rgba(255, 255, 255, 0);
+  
 }
 .logo {
   display: block;
@@ -138,7 +141,7 @@ export default {
 
 nav {
   width: 100%;
-  font-size: 1rem;
+  font-size: 2rem;
   text-align: center;
   margin-top: 2rem;
 }
@@ -182,12 +185,11 @@ nav a.router-link-exact-active {
 footer {
   float: left;
   width: 100%;
-  min-width: 1200px;
   height: 640px;
   background-color: #222;
 }
 footer .footercontent {
-  width: 1120px;
+  width: 100%;
   position: relative;
   margin: 0px auto;
 }
@@ -210,14 +212,12 @@ footer a:hover {
   color: #fff;
 }
 footer .contact {
-  width: 1120px;
+  width: 100%;
   position: relative;
   float: left;
   margin: 80px auto 30px auto;
-  display: block;
 }
 footer .content {
-  width: 1120px;
   height: 320px;
   position: relative;
   float: left;
@@ -225,7 +225,7 @@ footer .content {
   display: block;
 }
 footer .copy {
-  width: 1120px;
+  width: 100%;
   position: relative;
   float: left;
   margin: 0px auto;
