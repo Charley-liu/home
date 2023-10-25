@@ -95,19 +95,16 @@ export default {
     data: [
       {
         link: "/home",
-        icon: "mdi-home",
         value: "one",
         name: "首页",
       },
       {
         link: "/product",
-        icon: "mdi-apps",
         value: "two",
         name: "产品",
       },
       {
         link: "/about",
-        icon: "mdi-tooltip-account",
         value: "three",
         name: "关于",
       },
